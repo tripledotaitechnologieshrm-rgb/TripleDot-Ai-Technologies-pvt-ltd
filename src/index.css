@@ -11424,3 +11424,172 @@ html.has-custom-cursor :is(input, textarea, select, [contenteditable='true']) {
     --card-h: 92px;
   }
 }
+
+/* ===== 404 page (standalone: no header / footer) ===== */
+.nf {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 28px 16px 72px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.nf-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.nf-glow {
+  position: absolute;
+  width: 46vmax;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.16;
+}
+.nf-glow.is-a { top: -18vmax; left: -14vmax; background: var(--teal); }
+.nf-glow.is-b { bottom: -22vmax; right: -12vmax; background: var(--blue); }
+.nf-glow.is-c { top: 30%; left: 55%; width: 26vmax; background: var(--coral); opacity: 0.08; }
+
+.nf-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse at center, #000 10%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 10%, transparent 70%);
+}
+
+.nf-logo {
+  justify-self: start;
+  width: min(100%, 1120px);
+  margin-inline: auto;
+}
+
+.nf-card {
+  align-self: center;
+  width: min(100%, 560px);
+  padding: 44px 40px 40px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  text-align: center;
+  animation: nf-rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.nf-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 0 22px;
+  color: var(--ink);
+  font: 800 clamp(4.5rem, 16vw, 7rem) / 1 var(--display);
+  letter-spacing: -0.04em;
+}
+
+.nf-dots {
+  display: inline-flex;
+  align-items: center;
+}
+.nf-dots i {
+  width: 0.42em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin-inline: -0.06em;
+  animation: nf-bob 2.4s ease-in-out infinite;
+}
+.nf-dots .is-pink { background: #ec74b0; }
+.nf-dots .is-red { background: #d42f4d; opacity: 0.92; animation-delay: 0.15s; }
+.nf-dots .is-indigo { background: #4332b0; opacity: 0.92; animation-delay: 0.3s; }
+:root[data-theme='dark'] .nf-dots .is-indigo { background: #7a6af0; }
+
+.nf-eyebrow {
+  margin: 0 0 8px;
+  color: var(--blue);
+  font: 600 0.78rem/1.2 var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.nf h1 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font: 700 clamp(1.6rem, 4vw, 2.1rem) / 1.15 var(--display);
+  letter-spacing: -0.02em;
+}
+
+.nf-text {
+  max-width: 42ch;
+  margin: 0 auto 20px;
+  color: var(--body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.nf-path {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  margin: 0 0 28px;
+  padding: 7px 8px 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--tint);
+  font-size: 0.82rem;
+}
+.nf-path span {
+  flex: none;
+  color: var(--muted);
+}
+.nf-path code {
+  overflow: hidden;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: 500 0.82rem/1.4 ui-monospace, 'Cascadia Code', Consolas, monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.nf-back svg {
+  transform: scaleX(-1);
+}
+
+@keyframes nf-rise {
+  from { opacity: 0; transform: translateY(16px); }
+}
+@keyframes nf-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.08em); }
+}
+
+@media (max-width: 520px) {
+  .nf-card { padding: 34px 20px 28px; border-radius: 18px; }
+  .nf-actions .btn { flex: 1 1 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-card, .nf-dots i { animation: none; }
+}
