@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#0a0f1d" />
     <meta property="og:site_name" content="TripleDot AI Technologies" />
     <meta property="og:title" content="TripleDot AI Technologies" />
     <meta property="og:description" content="Real skills. Real projects. Real careers." />
@@ -17,11 +17,11 @@
     />
     <title>TripleDot AI Technologies</title>
     <script>
-      // Light is the default; restore dark before first paint if the visitor chose it.
+      // Dark is the default; switch to light before first paint if the visitor chose it.
       try {
-        if (localStorage.getItem('theme') === 'dark') {
-          document.documentElement.dataset.theme = 'dark'
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0a0f1d')
+        if (localStorage.getItem('theme') === 'light') {
+          delete document.documentElement.dataset.theme
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
         }
       } catch (e) {}
     </script>
