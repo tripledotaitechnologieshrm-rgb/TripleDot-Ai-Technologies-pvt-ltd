@@ -7,8 +7,11 @@ import type { CSSProperties } from 'react'
 // Every service page uses the brand purple (the 'blue' token), like Digital Marketing
 const TONE = 'blue'
 
-export default function ServiceDetail() {
-  const { id } = useParams()
+// `serviceId` lets a short route (e.g. /digital-marketing) show a service page
+// without a :id param; otherwise the id comes from /services/:id.
+export default function ServiceDetail({ serviceId }: { serviceId?: string }) {
+  const params = useParams()
+  const id = serviceId ?? params.id
   const index = services.findIndex((s) => s.id === id)
   if (index === -1) return <Navigate to="/services" replace />
 

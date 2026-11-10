@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Link, Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom'
+import { Link, Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import { CustomCursor } from './components/CustomCursor'
 import { Header } from './components/Header'
 import { Footer, Seo } from './components/ui'
@@ -66,7 +66,8 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:id" element={<ServiceDetail />} />
-        <Route path="/digital-marketing" element={<Navigate to="/services/digital-marketing" replace />} />
+        <Route path="/digital-marketing" element={<ServiceDetail serviceId="digital-marketing" />} />
+        <Route path="/software-development" element={<ServiceDetail serviceId="software-development" />} />
         <Route path="/edtech" element={<EdTech />} />
         <Route path="/learning-portal" element={<LearningPortal />} />
         <Route path="/careers" element={<Careers />} />

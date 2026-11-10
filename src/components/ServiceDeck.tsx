@@ -148,9 +148,15 @@ export function ServiceDeck() {
             <span className="on-touch">Tap the pack to explore our services</span>
           </>
         ) : active === null ? (
-          <span>Click a card to turn it over</span>
+          <>
+            <span className="on-hover">Click a card to turn it over</span>
+            <span className="on-touch">Tap a card to turn it over</span>
+          </>
         ) : (
-          <span>Click the card again to view the service</span>
+          <>
+            <span className="on-hover">Click the card again to view the service</span>
+            <span className="on-touch">Tap the card again to view the service</span>
+          </>
         )}
       </p>
     </div>
